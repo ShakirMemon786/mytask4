@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+        <record id="course_details_view" model="ir.ui.view">
+            <field name="name">course details form view</field>
+            <field name="model">course.details</field>
+            <field name="arch" type="xml">
+                <form string="Course Information">
+                    <group>
+                        <field name="name"/>
+                        <field name="course_type"/>
+                        <field name="duration"/>
+                    </group>
+                    <group>
+                        <field name="certificate"/>
+              <!--          <field name="student">
+                            <tree string="Information"  edit="true" editable="bottom">
+                                <field name="name"/>
+                            </tree>
+                        </field>!-->
+              <!--          <field name="faculty_ids">
+                            <tree string="Information"  edit="true" editable="bottom">
+                                <field name="name"/>
+                            </tree>
+                        </field>!-->
+                    </group>
+                </form>
+            </field>
+        </record>
+
+         <record id="course_info_list_view" model="ir.ui.view">
+            <field name="name">course details list view</field>
+            <field name="model">course.details</field>
+            <field name="arch" type="xml">
+                <tree string="Course information">
+                        <field name="name"/>
+                        <field name="course_type"/>
+                        <field name="duration"/>
+                        <field name="certificate"/>
+                    <!--    <field name="student"/>
+                        <field name="faculty_ids"/>!-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="course_details_search_view" model="ir.ui.view">
+            <field name="name">course details search view</field>
+            <field name="model">course.details</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_course_details" model="ir.actions.act_window">
+            <field name="name">course</field>
+            <field name="res_model">course.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="course_menu" name="course" action="action_course_details"
+                  parent="student"/>
+    </data>
+</flectra>

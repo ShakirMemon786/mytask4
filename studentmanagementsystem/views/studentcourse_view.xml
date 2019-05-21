@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="studentcourse_details_form_view" model="ir.ui.view">
+            <field name="name">student course details form view</field>
+            <field name="model">studentcourse.details</field>
+            <field name="arch" type="xml">
+                <form string="Student Course Information">
+                    <header>
+                        <button name="button_pending" string="Pending" widget="statusbar"  class="oe_highlight" type="object"/>
+                        <button name="button_confirm" string="Confirm" widget="statusbar" class="oe_highlight" type="object"/>
+                        <button name="button_cancle" string="Cancle"  widget="statusbar" class="oe_highlight" type="object"/>
+                        <field name="state" widget ="statusbar" statusbar_visible="pending,confirm,cancle"/>
+                    </header>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="course_ids">
+
+                            <tree string="Information">
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                        <field name="faculty_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="studentcourse_details_list_view" model="ir.ui.view">
+            <field name="name">student course details list view</field>
+            <field name="model">studentcourse.details</field>
+            <field name="arch" type="xml">
+                <tree string="student course details">
+                <field name="student_id"/>
+                <field name="course_ids"/>
+                <field name="faculty_id"/>
+                <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+          <record id="studentcourse_search_view" model="ir.ui.view">
+            <field name="name">student course details search</field>
+            <field name="model">studentcourse.details</field>
+            <field name="arch" type="xml">
+                    <search>
+                        <!--<filter string="account_type" domain="[('account_type','=', 'current')]"/> !-->
+                        <field name="student_id"/>
+                        <field name="course_ids"/>
+                        <field name="faculty_id"/>
+
+                        <group expand="0" string="Group By...">
+                            <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                        </group>
+                    </search>
+            </field>
+          </record>
+
+        <record id="action_studentcourse_details" model="ir.actions.act_window">
+            <field name="name">Student Course</field>
+            <field name="res_model">studentcourse.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+        <menuitem id="studentcourse_details_menu" name="Student Course Details" action="action_studentcourse_details"
+                  parent="student"/>
+<!--
+        <menuitem id="account_management_config" name="Account Config" parent="account_mgmt_root"/>
+
+        <menuitem id="account_mgmt_menu" name="account" action="action_account_details"
+                  parent="account_management_config"/>
+!-->
+
+    </data>
+</flectra>
